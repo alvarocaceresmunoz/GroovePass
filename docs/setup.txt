@@ -1,0 +1,7 @@
+screen: ic2-1
+accel: ic-2
+distance = d4
+loudness = a2
+
+10.148.187.209
+g54mrt
