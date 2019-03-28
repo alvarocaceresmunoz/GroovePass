@@ -6,6 +6,7 @@ inputPortDistance = 4
 inputPortLoudness = 2
 grove6axis.init6Axis()
 
+nearDistanceThreshold = 60
 typeTime = '%f'
 typeLoudness = '%d'
 typeDistance = '%d'
@@ -31,5 +32,9 @@ while(True):
     accelerationY = acceleration[1]
     accelerationZ = acceleration[2]
 
-    print(rowFormatString % (timestamp, distance, loudness, orientationX, orientationY, orientationZ, accelerationX, accelerationY, accelerationZ))
+    # print(rowFormatString % (timestamp, distance, loudness, orientationX, orientationY, orientationZ, accelerationX, accelerationY, accelerationZ))
+    if distance < nearDistanceThreshold:
+        print('%d: near!', distance)
+    else:
+        print('%d: far...', distance)
     time.sleep(waitTime)
