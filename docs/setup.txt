@@ -1,9 +1,17 @@
-screen: ic2-1
-accel: ic-2
-distance = d4
-loudness = a2
+screen            = i2c-1
+accel             = i2c-2
+distance          = d4
+touch             = d3
+loudness          = a2
+loudness2 / sound = a1
 
-10.148.187.230
+10.148.187.252
 g54mrt
 
+sftp://g54mrt@10.148.187.228/home/g54mrt/
+ssh g54mrt@10.148.187.228
+
 /(60*60*24)+"1/1/1970"
+
+set ff=unix
+find . -name \*.pyc -delete
