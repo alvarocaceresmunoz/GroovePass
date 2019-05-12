@@ -21,8 +21,10 @@ distanceMin = 30
 
 # port config constants
 portLoudness = 2
-portNoise = 0
+portNoise = 1
 portDistance = 4
+portTouch = 3
+grovepi.pinMode(portTouch,'INPUT')
 
 # other constants
 userKeepsKnocking = True
@@ -32,15 +34,14 @@ waitTime = 0.005
 
 grove6axis.init6Axis()
 
+logList = []
 
 print("[info] getting ambient noise...")
 while userKeepsKnocking:
-    #read from an analog sensor on input 0 (loudness sensor)
-    loudness = grovepi.analogRead(portLoudness)
-    #read from an analog sensor on input 1 (noise sensor)
-    noise = grovepi.analogRead(portNoise)
-    #read from a digital sensor (ultrasonic) on input 4
     distance = grovepi.ultrasonicRead(portDistance)
+    loudness = grovepi.analogRead(portLoudness)
+    noise = grovepi.analogRead(portNoise)
+    touch = grovepi.digitalRead(portTouch)
 
     acceleration = grove6axis.getAccel()
     accelerationX = acceleration[0]
@@ -90,14 +91,24 @@ while userKeepsKnocking:
     noiseLast = noise
 
     #If the high pass is above 4 and the sensor readings are above the average threshold, knocking is occuring
-    if loudness > (noiseAvg + noiseThreshold): # and distance < distanceMin:
+    #if loudness > (noiseAvg + noiseThreshold): # and distance < distanceMin:
+    if touch == 1:
         knockDetected = True
         timeSinceLastKnock = 0
     else:
         knockDetected = False
         timeSinceLastKnock += 1
 
-    print("%4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %s, %d, %f, %f, %f, %f"%(time.time(),distance,loudness,noise,noiseAvg,loudnessHPF,noiseHPF,knockDetected,timeSinceLastKnock,accelerationX,accelerationY,accelerationZ,accelerationCombined))
+    knockString = ''
+    if knockDetected:
+        knockString = 'Knock!'
+    else:
+        knockString = '......'
+    logList.append([knockDetected, timeSinceLastKnock])
+    print('%s,%d' % (knockString, timeSinceLastKnock))
+    # print("%4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %4.2f, %s, %d, %f, %f, %f, %f"%(time.time(),distance,loudness,noise,noiseAvg,loudnessHPF,noiseHPF,knockDetected,timeSinceLastKnock,accelerationX,accelerationY,accelerationZ,accelerationCombined))
 
-    # if timeSinceLastKnock > timeSinceLastKnockMax:
-    #     userKeepsKnocking = False
+    if timeSinceLastKnock > timeSinceLastKnockMax:
+        userKeepsKnocking = False
+
+
