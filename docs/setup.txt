@@ -1,9 +1,6 @@
 screen            = i2c-1
-accel             = i2c-2
 distance          = d4
 touch             = d3
-loudness          = a2
-loudness2 / sound = a1
 
 10.148.187.252
 g54mrt

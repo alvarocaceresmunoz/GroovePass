@@ -1,0 +1,43 @@
+[ ] 1900 total
+  [x] 200 summary (10%)
+    [x] 100 project summary
+    [x] 100 contents
+  [x] 300 background and motivation (10%)
+    [x] 30 intro
+    [x] 100 proposal idea
+    [x] 70 motivation (why is it worth creating)
+    [x] 100 context
+  [x] 300 related work (10%)
+    [x] 30 intro
+    [x] 65 moodle literature
+    [x] 65 design frameworks for sensing, ubicomp vision, ubicomp literature
+    [x] 65 existing available/related applications/hw/products
+    [x] 75 conclusions
+      [x] what have I learned from them
+      [x] common points and differences
+  [x] 300 design (17.5%)
+    [x] 30 intro
+    [x] 90 interaction design (diagrams, sketches)
+    [x] 80 use cases
+    [x] 100 technical design
+      [x] 50 design
+      [x] 50 aspects for future implementation
+  [ ] 300 implementation (17.5%)
+    [x] 30 intro
+    [x] 100 prototype setup
+    [ ] 130 developed features
+    [x] 40 future work
+  [ ] 300 testing (20%)
+    [x] 30 intro
+    [ ] 70 data calibration, ground truth
+    [ ] 100 complex tests
+    [ ] 100 results (tables, graphs)
+  [x] 200 critical reflection (15%)
+    [x] 30 intro
+    [x] 70 ethical issues
+    [x] 100 technical issues (strengths & weaknesses)
+      [x] 50 devices used, uses of sensing
+      [x] 50 outcomes of testing
+  [x] appendix A
+    [x] instructions
+
